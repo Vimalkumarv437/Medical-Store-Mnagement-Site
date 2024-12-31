@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+   {% load static %}
+   <link rel="stylesheet" href="{% static 'css/login.css'  %}">
+ 
+</head>
+<body>
+    
+<div class="container">
+
+    <h1 class="welcome_text">Login</h1><br>
+
+
+<form action="{% url 'login_page' %}" method="POST" class="form">
+
+    {% csrf_token  %}  
+
+<div class="input_div">
+
+<input  type="text" name="username" required maxlength="20"  class="input" placeholder="Username" autofocus>
+</div><br>
+
+
+<div class="input_div" >
+<input type="password" name="password" required maxlength="10" minlength="8" class="input" placeholder="Password">
+</div><br>
+
+<div class="input_div" >
+    <input type="submit" name="submit" value="submit" class="submit_btn">
+</div>
+
+<p>Don't have an account? <span class="signup"><a href="{% url 'signup' %}" style="color: red; text-decoration: none;">Sign up here</a></span></p><br>
+
+{% if messages %}
+{% for message in messages %}
+    <div class="error">{{ message }}</div>
+{% endfor %}
+{% endif %}
+
+</form><br>
+
+<img src="{% static 'images/Rectangle 4.png'  %}" alt="img" class="image_login">
+
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
+

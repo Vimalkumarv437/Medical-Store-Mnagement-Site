@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/navbar.css'  %}">
+  <link rel="stylesheet" href="{% static 'css/home.css'  %}">
+  <link rel="stylesheet" href="{% static 'css/list_medicine.css'  %}">
+  <link rel="stylesheet" href="{% static 'css/add_medicine.css'  %}">
+  
+ 
+  
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#" class="navbar-brand">MyWebsite</a>
+
+      <!-- Toggler Button -->
+      <button class="navbar-toggler" id="navbar-toggler">
+        &#9776;
+      </button>
+
+      <!-- Navbar Links and Search -->
+      <div class="navbar-menu" id="navbar-menu">
+        <ul class="navbar-links">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="{% url 'contactus' %}">Contact us</a></li>
+          <li><a href="{% url 'add_medicine' %}">Add medicine</a></li>
+          <li><a href="{% url 'list_medicines' %}">list of medicine</a></li>
+        </ul>
+        <!-- Search Bar -->
+        <form class="navbar-search">
+          <a href="{% url 'logout' %}" class="logout">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368" class="logout-btn">
+                <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/>
+            </svg>
+        </a>
+        </form>
+      </div>
+    </div>
+  </nav>
+{% block 'content' %}
+
+{% endblock %}
+
+
+  <script src="{% static 'js/script.js' %}"></script>
+
+
+
+</body>
+</html>

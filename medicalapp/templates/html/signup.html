@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+    {% load static  %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+    
+<div class="container">
+
+<h1 class="sign-txt">sign up</h1>
+
+
+<form action="" method="post" class="form">
+    {% csrf_token  %}  
+
+<div class="signup-div">
+<input type="text" name="username" required autofocus placeholder="Username"  maxlength="50">
+</div><br>
+
+
+<div class="signup-div">
+<input type="password" name="password" required  placeholder="Password" minlength="8" maxlength="10">
+</div><br>
+
+<div class="signup-div">
+<input type="password" name="confirm_password" required placeholder="Confirm password" minlength="8" maxlength="10">
+</div><br>
+
+<div class="signup-submit">
+<input type="submit" name="submit" value="submit">
+</div><br>
+
+
+    <p>Already have an account? <span class="signup"><a href="{% url 'login_page' %}" style="color: red; text-decoration: none;">Login here</a></span></p><br>
+
+
+{% if messages %}
+{% for message in messages %}
+    <div class="error">{{ message }}</div>
+{% endfor %}
+{% endif %}
+</form>
+
+
+<img src="https://www.transparentpng.com/thumb/doctor/foreign-old-male-doctor-clipart-png--bFAEUQ.png" alt="img" class="doctor-img">
+
+
+</div>
+
+
+
+</body>
+</html>
+

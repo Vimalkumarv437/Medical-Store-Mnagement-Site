@@ -1,0 +1,27 @@
+{% extends 'layout/navbar.html' %}
+
+{% block 'content' %}  
+
+    <div class="container add-medicine-page">
+        <h1>Add Medicine</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+               
+                <input type="text" class="form-control" id="name" name="name" required placeholder="Medicine name">
+            </div><br>
+            <div class="form-group">
+                <input type="number" class="form-control" id="stock" name="stock" min="0" required placeholder="Available Stock">
+            </div><br>
+            <button type="submit" class="btn btn-primary">Add Medicine</button><br>
+          
+        </form>
+
+        {% if error %}
+            <div class="alert alert-danger mt-3">
+                {{ error }}
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

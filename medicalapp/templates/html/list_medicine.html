@@ -1,0 +1,100 @@
+{% extends 'layout/navbar.html' %}
+
+{% block 'content' %} 
+
+<div class="container-2">
+    <form action="" id="search-form">
+        <input type="text" placeholder="Search medicine" id="search-input">
+        <button type="submit" name="search" class="search">Search</button>
+    </form>
+
+    <h2>Your Medicines</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Available Stock</th>
+                <th>Added At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="medicine-table-body">
+            {% for medicine in page_obj %}
+                <tr>
+                    <td>{{ medicine.name }}</td>
+                    <td>{{ medicine.stock }}</td>
+                    <td>{{ medicine.added_at }}</td>
+                    <td>
+                        <a href="{% url 'edit_medicine' medicine.id %}" class="btn btn-warning">Edit</a>
+                        <form action="{% url 'delete_medicine' medicine.id %}" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No medicines found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <span class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; First</a>
+                <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#search-form').submit(function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            // Get the search input value
+            var searchQuery = $('#search-input').val();
+
+            // Make an AJAX request
+            $.ajax({
+                url: '{% url "list_medicines" %}', // Ensure this URL matches your view
+                type: 'GET',
+                data: { q: searchQuery },
+                headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                success: function(data) {
+                     $('#medicine-table-body').html(data); 
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    $('#medicine-table-body').html('<tr><td colspan="4">Error retrieving results.</td></tr>');
+                }
+            });
+        });
+    });
+
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this medicine?");
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

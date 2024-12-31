@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/edit_medicine.css'  %}">
+</head>
+<body>
+    
+
+    
+    <div class="container">
+        <h2>Edit Medicine</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Medicine Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ medicine.name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="stock">Available Stock</label>
+                <input type="number" class="form-control" id="stock" name="stock" value="{{ medicine.stock }}" min="0" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Medicine</button>
+            <a href="{% url 'list_medicines' %}" class="btn btn-secondary mt-2">Back to List</a>
+        </form>
+    </div>
+    
+   
+
+
+
+
+
+
+
+
+
+</body>
+</html>

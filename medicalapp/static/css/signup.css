@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+}
+
+.container {
+    background-color: white;
+    border-radius: 12px;
+    width: 60%;
+    height: 70vh;
+    margin-top: 6rem;
+}
+
+
+.signup-div input {
+    height: 35px;
+    width: 265px;
+    text-align: center;
+    border-radius: 15px;
+    background-color: white;
+    border: 1px solid;
+}
+
+.signup-submit input {
+    height: 44px;
+    width: 152px;
+    border-radius: 45px;
+    background-color: white;
+    font-weight: bold;
+    border: 1px solid;
+    margin: 0 0 0 53px;
+}
+
+.signup-submit input:hover {
+    color: white;
+    background-color: black;
+}
+
+
+.form {
+    padding: 50px;
+}
+
+
+.sign-txt {
+    display: inline;
+    font-size: 50px;
+    position: relative;
+    left: 86px;
+    top: 25px;
+}
+
+
+.doctor-img {
+    position: absolute;
+    left: 649px;
+    height: 60vh;
+    bottom: 8rem;
+}
+
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+
+@media (max-width: 1236px) {
+    .container {
+        width: 80%;
+        height: auto;
+        margin-top: 5rem;
+    }
+
+    .form {
+        padding: 40px;
+    }
+
+    .sign-txt {
+        left: 50px;
+        font-size: 40px;
+    }
+
+    .doctor-img {
+        display: none;
+    }
+
+    .signup-div input {
+        width: 100%;
+        max-width: 265px;
+    }
+
+    .signup-submit input {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 648px) {
+    .container {
+        width: 100%;
+        height: auto;
+        margin-top: 4rem;
+    }
+
+    .form {
+        padding: 30px;
+    }
+
+    .sign-txt {
+        left: 0;
+        font-size: 32px;
+        text-align: center;
+        position: static;
+        margin-bottom: 15px;
+    }
+
+    .signup-div input {
+        width: 100%;
+        max-width: 265px;
+    }
+
+    .signup-submit input {
+        width: 100%;
+        max-width: 152px;
+        margin: 10px auto;
+    }
+
+    .doctor-img {
+        display: none;
+    }
+}
